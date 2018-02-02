@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Library</title>
+    </h:head>
+    <h:body>
+        <h:form id="form" prependId="false">
+            <p:outputLabel>Manage books: </p:outputLabel>
+            <h:panelGrid id="form1" columns="3" cellpadding="5">
+                <p:commandButton value = "Create" action = "createBook" process="@this,form1"/>
+                <p:commandButton value = "Update" action = "updateBook" process="@this,form1"/>
+                <p:commandButton value = "Delete" action = "deleteBook" process="@this,form1"/>
+            </h:panelGrid>
+            <p:dataList value="#{libraryController.books}" var="book" itemType="disc"> #{book.title}, #{book.author} </p:dataList>
+
+            <p:outputLabel>Manage students: </p:outputLabel>
+            <h:panelGrid id="form2" columns="3" cellpadding="5">
+                <p:commandButton value ="Create" action = "createStudent" process="@this,form2"/>
+                <p:commandButton value ="Update" action = "updateStudent" process="@this,form2"/>
+                <p:commandButton value ="Delete" action = "deleteStudent" process="@this,form2"/>
+            </h:panelGrid>
+            <p:dataList value="#{libraryController.students}" var="student" itemType="disc"> #{student.name}, #{student.age} </p:dataList>
+            
+            <p:outputLabel>Manage student's books: </p:outputLabel>
+            <h:panelGrid id="form3" columns="4" cellpadding="5">
+                <p:commandButton value = "Add new" action = "addBookToStudent" process="@this,form3"/>
+                <p:commandButton value = "Edit" action = "editStudentBook" process="@this,form3"/>
+                <p:commandButton value = "Delete" action = "deleteStudentBook" process="@this,form3"/>
+                <p:commandButton value = "List student's books" action="listStudentBooks" process="@this,form3"/>
+            </h:panelGrid>
+            
+
+        </h:form>
+    </h:body>
+</html>
+
